@@ -6,7 +6,7 @@
             "name": "Python Debugger: Module",
             "type": "debugpy",
             "request": "launch",
-            "module": "1.main"
+            "module": "1.part1",
         }
     ]
 }
