@@ -18,6 +18,23 @@ def main():
 
 
 def worker(data: Iterable[str]):
+    # Idea:
+    #
+    # let n be a decimal string of length L
+    # S(k) = maximum 12-digit subsequence contained in the last k digits of n (n[−k:])
+    # - S(12) is the last 12 digits of n (n[-12:])
+    # - S(13) is the maximum of:
+    #   - S(12)
+    #   - the 12-digit number starting with n[-13], followed by the best 11-digit subsequence in n[-12:]
+    # ...
+    # - S(i) is the maximum of:
+    #   - S(i-1)
+    #   - the 12-digit number starting with n[-i], followed by the best 11-digit subsequence in n[-i-1:]
+    # ...
+    # - S(L) = the largest 12-digit subsequence of the full string n
+    #
+    # (solve S(12) -> S(13) -> ... -> S(L))
+
     result = 0
 
     for s in data:
