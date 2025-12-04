@@ -1,19 +1,18 @@
 from typing import Iterator
 
 
-# TODO: I got this X stuff wrong, there are no Xs...
 def test():
     data = (
-        "..xx.xx@x.\n"
-        "x@@.@.@.@@\n"
-        "@@@@@.x.@@\n"
+        "..@@.@@@@.\n"
+        "@@@.@.@.@@\n"
+        "@@@@@.@.@@\n"
         "@.@@@@..@.\n"
-        "x@.@@@@.@x\n"
+        "@@.@@@@.@@\n"
         ".@@@@@@@.@\n"
         ".@.@.@.@@@\n"
-        "x.@@@.@@@@\n"
+        "@.@@@.@@@@\n"
         ".@@@@@@@@.\n"
-        "x.x.@@@.x.\n"
+        "@.@.@@@.@.\n"
     )
     expected = 13
     result = worker(data)
@@ -50,26 +49,16 @@ def count_neighbour_rolls(grid: list[list[str]], i: int, j: int) -> int:
 
 def worker(data: str):
     grid = [list(row) for row in data.split("\n")[:-1]]
-
     count = 0
-    visited_positions = set()
 
     for i in range(len(grid)):
         for j in range(len(grid[0])):
-            if grid[i][j] == "x":
-                for k, m in get_neighbour_positions(
-                    i, j, len(grid) - 1, len(grid[0]) - 1
-                ):
-                    if grid[k][m] == "@" and (k, m) not in visited_positions:
-                        neighbour_count = count_neighbour_rolls(grid, k, m)
-                        if neighbour_count < 4:
-                            count += 1
-                            print(k, m)
-                        visited_positions.add((k, m))
+            if grid[i][j] == "@":
+                count += count_neighbour_rolls(grid, i, j) < 4
 
     return count
 
 
 if __name__ == "__main__":
     test()
-    # print(main())
+    print(main())
