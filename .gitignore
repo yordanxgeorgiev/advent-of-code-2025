@@ -1,4 +1,5 @@
 secrets.json
 input.txt
 
+venv/
 __pycache__/
