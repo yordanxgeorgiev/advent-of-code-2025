@@ -1,5 +1,5 @@
 
-def worker(points: list[list[int]]):
+def solve(points: list[list[int]]):
     max_area = 0
 
     for i in range(len(points)-1):
@@ -22,7 +22,7 @@ def main():
         [int(s) for s in str_point.split(",", 1)]
         for str_point in data.splitlines()
     ]
-    return worker(parsed_data)
+    return solve(parsed_data)
 
 
 if __name__ == "__main__":
