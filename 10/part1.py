@@ -20,7 +20,7 @@ def parse_data(data: str) -> list[dict]:
         parsed_lines.append(
             {
                 "lights": lights,
-                "wiring": wiring,
+                "wiring": tuple(wiring),
                 "joltage": joltage,
             }
         )
