@@ -1,18 +1,12 @@
 graph = {}
-reversed_graph = {}
 
 
 def build_graph(data: str) -> list[dict]:
     graph.clear()
-    reversed_graph.clear()
 
     for line in data.splitlines():
         node, children = line.split(":", 1)
-        children = children.split()
-
-        graph[node] = children
-        for child in children:
-            reversed_graph.setdefault(child, []).append(node)
+        graph[node] = children.split()
 
 
 _cache = {}
